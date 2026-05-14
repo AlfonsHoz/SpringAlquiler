@@ -68,3 +68,7 @@ docker-compose down
 - **API Gateway**: http://localhost:8080
 - **Eureka Dashboard**: http://localhost:8761
 - **H2 Console**: http://localhost:{puerto}/h2-console (en cada microservicio)
+
+## Colección de Postman
+
+Importa el archivo `postman_collection.json` en Postman para probar todos los endpoints. La colección usa `{{baseUrl}}` apuntando a `http://localhost:8080` (API Gateway).

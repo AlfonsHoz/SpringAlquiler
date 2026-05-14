@@ -1,0 +1,367 @@
+{
+  "info": {
+    "name": "Sistema de Alquiler de Vehículos",
+    "description": "Colección de endpoints para el sistema de microservicios de alquiler de vehículos",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8080"
+    }
+  ],
+  "item": [
+    {
+      "name": "Vehículos",
+      "description": "Endpoints para gestión de vehículos",
+      "item": [
+        {
+          "name": "Listar todos los vehículos",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/vehicles",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "vehicles"]
+            },
+            "description": "Obtiene el listado completo de vehículos registrados"
+          }
+        },
+        {
+          "name": "Obtener vehículo por ID",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/vehicles/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "vehicles", "1"]
+            },
+            "description": "Obtiene los datos de un vehículo específico por su ID"
+          }
+        },
+        {
+          "name": "Listar vehículos disponibles",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/vehicles/available",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "vehicles", "available"]
+            },
+            "description": "Obtiene los vehículos que están disponibles para alquiler"
+          }
+        },
+        {
+          "name": "Crear vehículo",
+          "request": {
+            "method": "POST",
+            "url": {
+              "raw": "{{baseUrl}}/api/vehicles",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "vehicles"]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"brand\": \"Toyota\",\n  \"model\": \"Corolla\",\n  \"year\": 2024,\n  \"plate\": \"ABC-123\",\n  \"color\": \"Blanco\",\n  \"pricePerDay\": 50.00,\n  \"type\": \"SEDAN\"\n}"
+            },
+            "description": "Registra un nuevo vehículo en el sistema. Tipos válidos: SEDAN, SUV, PICKUP, MOTORCYCLE"
+          }
+        },
+        {
+          "name": "Actualizar vehículo",
+          "request": {
+            "method": "PUT",
+            "url": {
+              "raw": "{{baseUrl}}/api/vehicles/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "vehicles", "1"]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"brand\": \"Toyota\",\n  \"model\": \"Corolla\",\n  \"year\": 2024,\n  \"plate\": \"ABC-123\",\n  \"color\": \"Negro\",\n  \"pricePerDay\": 55.00,\n  \"type\": \"SEDAN\"\n}"
+            },
+            "description": "Actualiza los datos de un vehículo existente"
+          }
+        },
+        {
+          "name": "Eliminar vehículo",
+          "request": {
+            "method": "DELETE",
+            "url": {
+              "raw": "{{baseUrl}}/api/vehicles/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "vehicles", "1"]
+            },
+            "description": "Elimina un vehículo del sistema por su ID"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Clientes",
+      "description": "Endpoints para gestión de clientes",
+      "item": [
+        {
+          "name": "Listar todos los clientes",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/clients",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "clients"]
+            },
+            "description": "Obtiene el listado completo de clientes registrados"
+          }
+        },
+        {
+          "name": "Obtener cliente por ID",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/clients/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "clients", "1"]
+            },
+            "description": "Obtiene los datos de un cliente específico por su ID"
+          }
+        },
+        {
+          "name": "Obtener cliente por email",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/clients/email?email=juan@email.com",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "clients", "email"],
+              "query": [
+                {
+                  "key": "email",
+                  "value": "juan@email.com"
+                }
+              ]
+            },
+            "description": "Busca un cliente por su dirección de correo electrónico"
+          }
+        },
+        {
+          "name": "Obtener cliente por documento",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/clients/document/12345678",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "clients", "document", "12345678"]
+            },
+            "description": "Busca un cliente por su número de documento de identidad"
+          }
+        },
+        {
+          "name": "Crear cliente",
+          "request": {
+            "method": "POST",
+            "url": {
+              "raw": "{{baseUrl}}/api/clients",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "clients"]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Juan\",\n  \"lastName\": \"Pérez\",\n  \"email\": \"juan@email.com\",\n  \"phone\": \"+51 999888777\",\n  \"documentNumber\": \"12345678\",\n  \"address\": \"Av. Principal 123, Lima\"\n}"
+            },
+            "description": "Registra un nuevo cliente en el sistema"
+          }
+        },
+        {
+          "name": "Actualizar cliente",
+          "request": {
+            "method": "PUT",
+            "url": {
+              "raw": "{{baseUrl}}/api/clients/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "clients", "1"]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Juan\",\n  \"lastName\": \"Pérez García\",\n  \"email\": \"juan.perez@email.com\",\n  \"phone\": \"+51 999888777\",\n  \"documentNumber\": \"12345678\",\n  \"address\": \"Av. Secundaria 456, Lima\"\n}"
+            },
+            "description": "Actualiza los datos de un cliente existente"
+          }
+        },
+        {
+          "name": "Eliminar cliente",
+          "request": {
+            "method": "DELETE",
+            "url": {
+              "raw": "{{baseUrl}}/api/clients/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "clients", "1"]
+            },
+            "description": "Elimina un cliente del sistema por su ID"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Alquileres",
+      "description": "Endpoints para gestión de alquileres",
+      "item": [
+        {
+          "name": "Listar todos los alquileres",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/rentals",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "rentals"]
+            },
+            "description": "Obtiene el listado completo de alquileres"
+          }
+        },
+        {
+          "name": "Obtener alquiler por ID",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/rentals/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "rentals", "1"]
+            },
+            "description": "Obtiene los datos de un alquiler específico por su ID"
+          }
+        },
+        {
+          "name": "Consultar vehículos disponibles por fecha",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/rentals/available?startDate=2026-06-01T00:00:00&endDate=2026-06-10T00:00:00&type=SEDAN",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "rentals", "available"],
+              "query": [
+                {
+                  "key": "startDate",
+                  "value": "2026-06-01T00:00:00"
+                },
+                {
+                  "key": "endDate",
+                  "value": "2026-06-10T00:00:00"
+                },
+                {
+                  "key": "type",
+                  "value": "SEDAN"
+                }
+              ]
+            },
+            "description": "Consulta vehículos disponibles en un rango de fechas. El parámetro type es opcional. Tipos válidos: SEDAN, SUV, PICKUP, MOTORCYCLE"
+          }
+        },
+        {
+          "name": "Listar alquileres por cliente",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/rentals/client/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "rentals", "client", "1"]
+            },
+            "description": "Obtiene todos los alquileres de un cliente específico"
+          }
+        },
+        {
+          "name": "Listar alquileres por estado",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/rentals/status/PENDING",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "rentals", "status", "PENDING"]
+            },
+            "description": "Obtiene los alquileres filtrados por estado. Estados válidos: PENDING, ACTIVE, COMPLETED, CANCELLED"
+          }
+        },
+        {
+          "name": "Crear alquiler",
+          "request": {
+            "method": "POST",
+            "url": {
+              "raw": "{{baseUrl}}/api/rentals",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "rentals"]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"clientId\": 1,\n  \"vehicleId\": 1,\n  \"startDate\": \"2026-06-01T00:00:00\",\n  \"endDate\": \"2026-06-10T00:00:00\"\n}"
+            },
+            "description": "Crea un nuevo alquiler asociando un cliente y un vehículo con fechas definidas"
+          }
+        },
+        {
+          "name": "Completar alquiler",
+          "request": {
+            "method": "PUT",
+            "url": {
+              "raw": "{{baseUrl}}/api/rentals/1/complete",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "rentals", "1", "complete"]
+            },
+            "description": "Marca un alquiler como completado"
+          }
+        },
+        {
+          "name": "Cancelar alquiler",
+          "request": {
+            "method": "PUT",
+            "url": {
+              "raw": "{{baseUrl}}/api/rentals/1/cancel",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "rentals", "1", "cancel"]
+            },
+            "description": "Cancela un alquiler existente"
+          }
+        },
+        {
+          "name": "Eliminar alquiler",
+          "request": {
+            "method": "DELETE",
+            "url": {
+              "raw": "{{baseUrl}}/api/rentals/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "rentals", "1"]
+            },
+            "description": "Elimina un alquiler del sistema por su ID"
+          }
+        }
+      ]
+    }
+  ]
+}
